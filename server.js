@@ -12,17 +12,17 @@ const { type } = require("os");
 
 // Initialize Express app
 const app = express();
+const PORT = process.env.PORT || 5000;
+const MONGO_URI = process.env.MONGODB_URI;
+const JWT_SECRET = process.env.JWT_SECRET;
 app.use(cors());
 app.use(bodyParser.json());
 app.use("/uploads", express.static("uploads")); // Serve static profile images
 
-// JWT secret key
-const JWT_SECRET =
-  "7d0c897bd7be91a8746e5eb48b80401c91b1b825babd707dfca47f6a92909025";
 
 // MongoDB connection
 mongoose
-  .connect("mongodb://localhost:27017/eliteApp", {
+  .connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
