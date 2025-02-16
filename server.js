@@ -13,6 +13,7 @@ const { type } = require("os");
 // Initialize Express app
 const app = express();
 const PORT = process.env.PORT || 5000;
+require("dotenv").config();
 const MONGO_URI = process.env.MONGODB_URI;
 const JWT_SECRET = process.env.JWT_SECRET;
 app.use(cors());
@@ -486,5 +487,4 @@ app.delete("/api/assessments/:id", async (req, res) => {
 });
 
 // Start Server
-const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
